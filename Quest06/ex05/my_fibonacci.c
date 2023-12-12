@@ -3,9 +3,13 @@
 int my_fibonacci(int param_1)
 {
   
-  if (param_1 <= 1)
+  if (param_1 == 0)
   {
-    return param_1;
+    return 0;
+  }
+  else if (param_1 == 1)
+  {
+    return 1;
   }
   else
   {
