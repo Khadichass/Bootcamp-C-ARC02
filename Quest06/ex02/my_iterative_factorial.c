@@ -3,10 +3,16 @@
 int my_iterative_factorial(int param_1)
 {
   int factorial_num = 1;
-  
-  for (int i = 1; i <= param_1; i++)
+  if(param_1 < 0)
   {
-   factorial_num = i * factorial_num;
+    return 0;
+  }
+  else
+  {
+    for (int i = 1; i <= param_1; i++)
+    {
+    factorial_num = i * factorial_num;
+    }
   }
   
   return factorial_num;
