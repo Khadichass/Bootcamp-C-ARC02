@@ -35,17 +35,19 @@ t_bool my_is_even(int nbr)
 
 void my_define(int argc)
 {
-  if (my_is_even(argc) == TRUE) {
+  if (my_is_even(argc) == TRUE) 
+  {
     my_putstr(EVEN_MSG);
     my_putchar('\n');
   }
-  else {
+  else 
+  {
     my_putstr(ODD_MSG);
     my_putchar('\n');
   }
 }
 
-int main()
+int main(void)
 {
   my_define(9);
 }
