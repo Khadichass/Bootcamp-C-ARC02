@@ -43,7 +43,7 @@ char* my_union(char* param_1, char* param_2)
 
 int main(void)
 {
-  char* box = my_union("hello", "world");
+  char* box = my_union("ddf6vewg64f", "gtwthgdwthdwfteewhrtag6h4ffdhsd");
   printf("%s\n", box);
   //helowrd
 }
