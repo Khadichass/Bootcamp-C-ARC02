@@ -1,116 +1,66 @@
-// #include <stdio.h>
-// #include <string.h>
-// #include <stdlib.h>
-
-// int main(void)
-// {
-//    char* arr = (char*) malloc(20 * sizeof(char));
-//    strcpy(arr, "Hello World");
-//    char* seperator = malloc(3 * sizeof(char));
-//    strcpy(seperator, "l");
-
-//    printf("%s\n" , strtok(arr, seperator));
-
-// }
-
-
-// #include <stdio.h>
-// #include <string.h>
-// #include <stdlib.h>
-
-// int main(void)
-// {
-//     char* arr = (char*) malloc(20 * sizeof(char));
-//     strcpy(arr, "Hello World");
-//     char* separator = malloc(3 * sizeof(char));
-//     strcpy(separator, "W");
-
-//     char* token = strtok(arr, separator);
-//     while (token != NULL) {
-//         printf("%s\n", token);
-//         token = strtok(NULL, separator);
-//     }
-
-//     free(arr);
-//     free(separator);
-
-//     return 0;
-// }
-
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
-// Define a structure to hold the result array
-typedef struct {
-    char** array;
-    int size;
+typedef struct
+{
+   char** arr;
+   int size; 
 } string_array;
 
-string_array* my_split(char* param_1, char* param_2) {
-    // Check for NULL input
-    if (param_1 == NULL || param_2 == NULL) {
-        return NULL;
-    }
 
-    // Initialize variables
-    int count = 0;
-    int index = 0;
-    int inSubstring = 0;
-
-    // Count the number of substrings
-    for (int i = 0; param_1[i] != '\0'; i++) {
-        if (param_1[i] == param_2[0]) {
-            if (inSubstring) {
-                inSubstring = 0;
-                count++;
-            }
-        } else {
-            inSubstring = 1;
+int size_arr(char* str, char letter)
+{
+    int i = 0;
+    int size = 0;
+    while (str[i])
+    {
+        if (str[i] == letter)
+        {
+            size++;
         }
+        i++;
     }
-
-    // Handle the case when the last character is not a separator
-    if (inSubstring) {
-        count++;
-    }
-
-    // Allocate memory for the result array
-    string_array* result = (string_array*)malloc(sizeof(string_array));
-    result->array = (char**)malloc(count * sizeof(char*));
-    result->size = count;
-
-    // Process the string and populate the result array
-    inSubstring = 0;
-    for (int i = 0; param_1[i] != '\0'; i++) {
-        if (param_1[i] == param_2[0]) {
-            if (inSubstring) {
-                inSubstring = 0;
-                param_1[i] = '\0';  // Replace separator with null character
-            }
-        } else {
-            if (!inSubstring) {
-                result->array[index++] = &param_1[i];
-                inSubstring = 1;
-            }
-        }
-    }
-
-    return result;
+    return size + 1;
 }
 
-int main(void) {
-    // Example usage
-    char input1[] = "abc def gh-!";
-    char separator1[] = "d";
-    string_array* output1 = my_split(input1, separator1);
+string_array* my_split(char* param_1, char* param_2)
+{
+    string_array* arrs = malloc(sizeof(string_array));
+    arrs->size = size_arr(param_1, *param_2);
+    arrs->arr = malloc(sizeof(char*) * (arrs->size + 1));
+    arrs->arr[0] = malloc(sizeof(char) * (strlen(param_1) + 1));
+    int arr_index = 0;
+    int let_index = 0;
 
-    for (int i = 0; i < output1->size; i++) {
-        printf("%s\n", output1->array[i]);
+    for (int i = 0; i < strlen(param_1); i++)
+    {
+        if (param_1[i] == *param_2)
+        {
+            let_index = 0;
+            arr_index++;
+            arrs->arr[arr_index] =  malloc(sizeof(char) * (strlen(param_1) + 1));
+        }
+        else 
+        {
+            arrs->arr[arr_index][let_index] = param_1[i];
+            let_index++;
+        }
     }
 
-    // Free allocated memory
-    free(output1->array);
-    free(output1);
+    return arrs;
+    
+}
 
-    return 0;
+
+int main(void) {
+    string_array *str;
+
+    str = my_split("Hello World !", " ");
+    for (int i = 0; i < str->size; i++)
+    {
+        printf("%s\n", str->arr[i]);   
+    }
+
+
 }
