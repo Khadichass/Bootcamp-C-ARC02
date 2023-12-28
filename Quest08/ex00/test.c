@@ -23,36 +23,24 @@ int str_char(char* str, char letter){
 
 int hidenp(char* param_1, char* param_2)
 {
-  // int j = 0;
-  // int temp = 0;
 
-  // for (int i = 0; i < my_strlen(param_2) ; i++)
-  // {
-  //   temp = str_char(&param_2[i], param_1[j]);
-  //   if(temp == 0)
-  //   {
-  //     return 0;
-  //   }
-  //   i += temp;
-  // }
+  int index = 0;
+  int temp = 0;
+   for (int i = 0; i < my_strlen(param_1); i++)
+   {
+   
+      temp = str_char(&param_2[index], param_1[i]);
+      if (temp == 0)
+      {
+        return 0;
+      }
+      index += temp; 
+   }
 
-  int j = 0;
-  int count = 0;
-  for (int  i = 0; param_2[i]; i++)
-  {
-    if (param_2[i] == param_1[j])
-    {
-      j++;
-      count++;
-    }    
-  }
-
-  if (count == my_strlen(param_1))
-  {
     return 1;
-  }
+ 
+   
 
-  return 0;
 }
 
 int main(void)
@@ -60,7 +48,7 @@ int main(void)
   // char str[] = "hello";
   // printf("%d\n", my_strlen(str));
 
-  char str1[] = " ";
+  char str1[] = "hhhh";
   char str2[] = "long string ?ddl";
   printf("%d\n", hidenp(str1, str2));
 }
