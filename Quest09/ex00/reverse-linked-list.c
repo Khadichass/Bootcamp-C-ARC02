@@ -45,16 +45,17 @@ int main(void)
   p2.next = &p3;
   p3.next = &p4;
   p4.next = NULL;
-  int counter = 0;
+
+  // int counter = 0;
 
   listnode* header = reverse_linkedlist(temp);
   while (header != NULL)
   {
     printf("%d\n", header->val);
-    counter++;
+    // counter++;
     header = header->next;
 
-    printf("counter:%d\n", counter);  
+    // printf("counter:%d\n", counter);  
   }
 }
 
