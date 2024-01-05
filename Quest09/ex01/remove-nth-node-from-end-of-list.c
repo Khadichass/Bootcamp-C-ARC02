@@ -10,23 +10,43 @@ typedef struct s_listnode
 } listnode;
 #endif
 
+int my_length(listnode* head)
+{z
+  listnode* header = head;
+  int count = 0;
+  while (header != NULL)
+  {
+    count++;
+    header = header->next;
+  }
+
+  return count;
+}
 
 listnode* remove_nth_node_from_end_of_list(listnode* param_1, int param_2)
 {
   
   listnode* temp = param_1;
 
-  param_2 = 5;
-
-  for (int i = 0; i < param_2; i++)
+  int index = 0;
+  int length = my_length(param_1);
+  printf("----%d----\n", length);
+  if (length == param_2)
   {
-    if(param_1 != NULL)
-    {
-      printf("%d -> ", temp->val);
-    }
+    temp = temp->next;
+    return temp;
   }
-  printf("\n");
-  
+  while (temp != NULL)
+  {
+    index++;
+    if ((index + 1) == length - param_2 + 1)
+    {
+      temp->next = temp->next->next;
+    }
+    temp = temp->next;
+  }
+
+  return param_1;
 }
 
 
@@ -48,16 +68,19 @@ int main()
   numb4.next = NULL;
 
   listnode* temp = &numb1;
-  int count;
 
-  listnode* head = remove_nth_node_from_end_of_list(temp, count);
+  // int head = my_length(temp);
 
-  // while (head != NULL)
-  // {
-  //   printf("%d ->", head->val);
+  // printf("%d\n", head);
 
-  //   head = head->next;
-  // }
-  
+  listnode* curr = remove_nth_node_from_end_of_list(temp, 1);
+
+  // printf("%d\n", curr->val);
+  while (curr != NULL)
+  {
+    printf("%d ->", curr->val);
+
+    curr = curr->next;
+  }
 
 }
