@@ -13,7 +13,7 @@ typedef struct s_listnode
 
 listnode* remove_nth_node_from_end_of_list(listnode* param_1, int param_2)
 {
-  // adding listnode
+  
   listnode* temp = param_1;
 
   param_2 = 5;
