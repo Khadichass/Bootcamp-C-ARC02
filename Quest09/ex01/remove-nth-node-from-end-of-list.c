@@ -25,7 +25,7 @@ listnode* remove_nth_node_from_end_of_list(listnode* param_1, int param_2)
       printf("%d -> ", temp->val);
     }
   }
-  // printf("\n");
+  printf("\n");
   
 }
 
