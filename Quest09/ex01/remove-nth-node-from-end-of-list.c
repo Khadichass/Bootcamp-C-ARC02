@@ -11,7 +11,7 @@ typedef struct s_listnode
 #endif
 
 int my_length(listnode* head)
-{z
+{
   listnode* header = head;
   int count = 0;
   while (header != NULL)
